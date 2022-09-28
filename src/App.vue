@@ -1,6 +1,4 @@
 <template>
-
-
 <div>
   <h1> Directivas en VUE.js</h1>
   </div>
@@ -21,7 +19,6 @@
 
 <H3 v-html="html"></H3>
 
-
 <hr>
 <h2>V-SHOW</h2>
 <h3 >Tu edad es: {{edad}} </h3>
@@ -36,13 +33,23 @@
 <hr>
 <h2 >v-for</h2>
 
-<ul v-for="usuario in usuarios">
-  <li>{{usuario}}</li>
+<ul >
+  <li v-for="( usuario, index) in usuarios">{{index}}:{{usuario}}</li>
 </ul>
+<br>
+<ul >
+  <li v-for="(usuario, index) in usuarios" :key="index">{{index}}:{{usuario}}</li>
+</ul>
+<ul >
+  <li v-for="(valor, clave) in ususarioss" :key="clave">{{clave}}:{{valor}}</li>
+</ul>
+<hr>
+<h1>Empleando V-on</h1>
+<div @dblclick="click()" class="contenedor"> Clicks: {{clicks}}
 
+</div>
 
 </template>
-
 
 <script>
   export default {
@@ -52,6 +59,8 @@
       html:"<input type='text'> Ola!",
       edad: 5,
       usuarios: ["Melissa", "Fernando","Raul", "José"],
+      ususarioss:{nombre: "juana de arco"},
+      clicks: 0,
 
     }),
     methods:{
@@ -61,6 +70,9 @@
       quit(){
         
         this.edad--;
+      },
+      click(){
+this.clicks++
       }
     },
   };
@@ -79,5 +91,11 @@ div{
 h2{
   color:tomato;
   font-size: 2rem;
+}
+.contenedor{
+        background: pink;
+        color: snow;
+        font-weight: bolder;
+        height: 400px;
 }
 </style>
